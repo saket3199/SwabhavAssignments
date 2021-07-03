@@ -1,3 +1,4 @@
+//Write a Java program to find the largest and second largest value of an array.[10,56,78,100,34,57]
 package com.techlab.assignment;
 
 public class ArrayOperations {
