@@ -1,3 +1,4 @@
+// Program to find Armstrong number
 package com.techlab.assignment;
 import java.util.Scanner;
 public class armStrong {
