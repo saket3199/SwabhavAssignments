@@ -1,3 +1,4 @@
+//Write a Java program to calculate the average value of array elements [01,11,24,23,15]
 package com.techlab.assignment;
 
 public class ArrayAvg {
