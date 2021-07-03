@@ -1,3 +1,4 @@
+//Write a Java program to find duplicate values of an array. [10,56,78,100,78,57,01,10]
 package com.techlab.assignment;
 
 public class ArrayDuplicates {
