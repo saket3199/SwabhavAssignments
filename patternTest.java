@@ -1,3 +1,10 @@
+// Create new class as PatternTest.java 
+// And write logic to print following pattern:- 
+
+// 1
+// 1 1
+// 1 1 1 
+// 1 1 1 1
 package com.techlab.assignment;
 
 public class PatternTest {
