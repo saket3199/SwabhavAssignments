@@ -1,4 +1,11 @@
-package com.techlab.assignment;
+// .Write program for following using substring 
+// Input:- " https://www.swabhavtech.com@
+// java?abc";
+// Output:-
+// Company name:- swabhav tech
+// Lang:- java
+// Intern name:- abc( mention your name
+// package com.techlab.assignment;
 
 public class StringSplitting {
 
