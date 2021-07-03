@@ -1,3 +1,4 @@
+// Write a program to find all prime numbers upto 100
 package com.techlab.assignment;
 
 public class Prime {
