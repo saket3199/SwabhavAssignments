@@ -1,6 +1,6 @@
 package com.techlab.student;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	public String toString() {
 		return "\nStudent [rollNo=" + rollNo + ", fName=" + fName + ", lName=" + lName + "]";
 	}
@@ -25,5 +25,13 @@ public class Student {
 
 	public String getlName() {
 		return lName;
+	}
+
+	
+
+	@Override
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		return this.getfName().compareTo(o.getfName());
 	}
 }
