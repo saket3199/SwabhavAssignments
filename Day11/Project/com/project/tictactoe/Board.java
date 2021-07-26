@@ -9,6 +9,7 @@ public class Board {
 	public int getSize() {
 		return size;
 	}
+	
 	public void generateBoard(Cell board[][]) {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
