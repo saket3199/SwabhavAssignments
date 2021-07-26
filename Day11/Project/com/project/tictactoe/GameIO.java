@@ -4,17 +4,18 @@ import java.util.Scanner;
 
 import com.techlab.tictactoe.ResultEnum;
 
-
-
-public class GameIO {
+public class GameIO implements IOperations{
 	private Board Board;
 	private ResultAnalyzer ResultAnalyzer;
 	private int size;
+	private Players players;
+
 	public GameIO(int size) {
-		this.size=size;
+		this.size = size;
+		
 		Board = new Board(size);
 		ResultAnalyzer = new ResultAnalyzer(size);
-		
+
 	}
 
 	public void TakeInput() {
@@ -33,23 +34,24 @@ public class GameIO {
 		String p1 = in.nextLine();
 		System.out.print("Player 2, what is your name? ");
 		String p2 = in.nextLine();
-
-		boolean player1 = true;
+		players=new Players(p1,p2);
+		players.setPlayer1(true);
 		boolean gameEnded = false;
 		while (!gameEnded) {
 
 			// Draw the board
 
-			Board.drawBoard(board);
+			drawBoard(board);
 
 			// Print whose turn it is
-			if (player1) {
-				System.out.println(p1 + "'s Turn ("+Cell.X+"):");
+			if (players.isPlayer1()) {
+				System.out.println(players.getP1() + "'s Turn (" + Cell.X + "):");
+				
 			} else {
-				System.out.println(p2 + "'s Turn ("+Cell.O+"):");
+				System.out.println(players.getP2() + "'s Turn (" + Cell.O + "):");
 			}
 
-			if (player1) {
+			if (players.isPlayer1()) {
 				c = Cell.X;
 			} else {
 				c = Cell.O;
@@ -88,16 +90,34 @@ public class GameIO {
 					System.out.println("It's a " + ResultEnum.Tie);
 					gameEnded = true;
 				} else {
-
-					player1 = !player1;
+					boolean p11;
+					p11=players.isPlayer1();
+					p11 = !players.isPlayer1();
 				}
 
 			}
 
 		}
 
-		Board.drawBoard(board);
+		drawBoard(board);
 		in.close();
 
 	}
+
+	
+
+	
+	@Override
+	public void drawBoard(Cell[][] board) {
+		// TODO Auto-generated method stub
+		System.out.println("Board:");
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				System.out.print(board[i][j]);
+			}
+			System.out.println();
+		}
+		
+	}
+
 }
