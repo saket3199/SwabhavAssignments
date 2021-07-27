@@ -1,13 +1,16 @@
 package com.project.tictactoe;
 
-public class Players {
-	private String P1;
-	private String P2;
-	private boolean Player1;
-	private boolean Player2;
-	public Players(String P1,String P2) {
-		this.P1=P1;
-		this.P2=P2;
+public class Player {
+	private static String P1;
+	private static String P2;
+	private static boolean Player1;
+	private static boolean Player2;
+	public Player(String P1,String P2) {
+		Player.P1=P1;
+		Player.P2=P2;
+	}
+	public Player() {
+		
 	}
 	public String getP1() {
 		return P1;

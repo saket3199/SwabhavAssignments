@@ -1,6 +1,6 @@
 package com.project.tictactoe;
 
-public enum Cell {
+public enum Mark {
 	E,X,O
 
 }
