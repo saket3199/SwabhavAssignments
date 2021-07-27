@@ -1,8 +1,8 @@
 package com.project.tictactoe;
 
-public class Cells {
+public class Cell {
 	private Mark mark;
-	public Cells() {
+	public Cell() {
 	    this.setMark(Mark.E);
 	  }
 	public Mark getMark() {

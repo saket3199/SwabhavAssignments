@@ -9,47 +9,50 @@ public class Game {
 	private Board Board;
 	private ResultAnalyzer ResultAnalyzer;
 	private Player player;
-	
+
 	public Game(int size) {
-		this.size=size;
+		this.size = size;
 		new Board(size);
 		player = new Player();
-		GameIO= new GameIO(size);
+		GameIO = new GameIO(size);
 		Board = new Board(size);
 		ResultAnalyzer = new ResultAnalyzer(size);
-		
+
 	}
+
 	public void startGame() {
-		
+
 		TakeInput();
 	}
+
 	public int getSize() {
 		return size;
 	}
+
 	public void TakeInput() {
-		Cells[][] board = new Cells[size][size];
+		Cell[][] board = new Cell[size][size];
 		Mark c = Mark.E;
 		int row = 0;
 		int col = 0;
-;
+		;
 
 		Board.generateBoard(board);
 
-Cells cell = new Cells();
+		Cell cell = new Cell();
 		GameIO.getUserName();
 		boolean gameEnded = false;
 		while (!gameEnded) {
 
 			// Draw the board
-		
+
 			GameIO.drawBoard(board);
 
 			// Print whose turn it is
 			if (player.isPlayer1()) {
-				System.out.println(player.getP1() + "'s Turn (" + Mark.X + "):");
-				
+				GameIO.whoseTurn(player.getP1(), 1);
+
 			} else {
-				System.out.println(player.getP2() + "'s Turn (" + Mark.O + "):");
+				GameIO.whoseTurn(player.getP2(), 2);
 			}
 
 			if (player.isPlayer1()) {
@@ -59,12 +62,12 @@ Cells cell = new Cells();
 			}
 
 			while (true) {
-				
+
 				ArrayList<Integer> position = GameIO.userPosition();
 				row = position.get(0);
 				col = position.get(1);
-				
-				if (row < 0 || col < 0 || row > size-1 || col > size-1) {
+
+				if (row < 0 || col < 0 || row > size - 1 || col > size - 1) {
 					System.out.println("This position is off the bounds of the board! Try again.");
 
 				} else if (board[row][col] != cell) {
@@ -79,19 +82,19 @@ Cells cell = new Cells();
 			board[row][col].setMark(c);
 
 			if (ResultAnalyzer.playerHasWon(board) == Mark.X) {
-				System.out.println(player.getP1() + " has " + ResultEnum.Won);
+				GameIO.printResult(player.getP1(), 1);
 				gameEnded = true;
 			} else if (ResultAnalyzer.playerHasWon(board) == Mark.O) {
-				System.out.println(player.getP2() + " has " + ResultEnum.Won);
+				GameIO.printResult(player.getP2(), 1);
 				gameEnded = true;
 			} else {
 
 				if (Board.boardIsFull(board)) {
-					System.out.println("It's a " + ResultEnum.Tie);
+					GameIO.printResult(player.getP1(), 0);
 					gameEnded = true;
 				} else {
 					boolean p11;
-					p11=player.isPlayer1();
+					p11 = player.isPlayer1();
 					p11 = !player.isPlayer1();
 				}
 
@@ -100,9 +103,7 @@ Cells cell = new Cells();
 		}
 
 		GameIO.drawBoard(board);
-	
 
 	}
-
 
 }
