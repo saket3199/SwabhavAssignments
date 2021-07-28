@@ -2,10 +2,10 @@ package com.project.tictactoe;
 
 public class Board implements IBoardable {
 	private int size;
-	private Cell[][] cell;
+	private Cell[][] cells;
 	public Board(int size) {
 		this.size=size;
-		cell = new Cell[size][size];
+		cells = new Cell[size][size];
 		
 	}
 	public int getSize() {

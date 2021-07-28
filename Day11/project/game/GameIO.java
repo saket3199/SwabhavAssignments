@@ -29,6 +29,14 @@ public class GameIO implements IGameioable {
 		player.setPlayer1(true);
 
 	}
+	public void boardValidator(int i) {
+		switch(i) {
+		case 1:
+			System.out.println("This position is off the bounds of the board! Try again.");
+		case 2:
+			System.out.println("Someone has already made a move at this position! Try again.");
+		}
+	}
 
 	public ArrayList<Integer> userPosition() {
 

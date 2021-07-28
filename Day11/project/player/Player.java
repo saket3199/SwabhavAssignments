@@ -1,34 +1,34 @@
 package com.project.tictactoe;
 
 public class Player {
-	private static String P1;
-	private static String P2;
-	private static boolean Player1;
-	private static boolean Player2;
+	private static String p1;
+	private static String p2;
+	private static boolean player1;
+	private static boolean player2;
 	public Player(String P1,String P2) {
-		Player.P1=P1;
-		Player.P2=P2;
+		Player.p1=P1;
+		Player.p2=P2;
 	}
 	public Player() {
 		
 	}
 	public String getP1() {
-		return P1;
+		return p1;
 	}
 	public String getP2() {
-		return P2;
+		return p2;
 	}
 	public boolean isPlayer1() {
-		return Player1;
+		return player1;
 	}
 	public void setPlayer1(boolean player1) {
-		Player1 = player1;
+		Player.player1 = player1;
 	}
 	public boolean isPlayer2() {
-		return Player2;
+		return player2;
 	}
 	public void setPlayer2(boolean player2) {
-		Player2 = player2;
+		Player.player2 = player2;
 	}
 	
 	
