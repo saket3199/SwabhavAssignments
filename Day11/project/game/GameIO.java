@@ -1,25 +1,31 @@
-package com.project.tictactoe;
+package com.project.tictactoe.game;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.project.tictactoe.analyzer.ResultAnalyzer;
+import com.project.tictactoe.board.Board;
+import com.project.tictactoe.cell.Cell;
+import com.project.tictactoe.mark.Mark;
+import com.project.tictactoe.player.Player;
 import com.techlab.tictactoe.ResultEnum;
 
 public class GameIO implements IGameioable {
 	private int size;
 	private Player player;
 	private Scanner input;
+	private Game game;
 
-	public GameIO(int size) {
-		this.size = size;
+	public GameIO() {
 		input = new Scanner(System.in);
-		new Board(size);
-		new ResultAnalyzer(size);
-
+		game = new Game(boardSize());
 	}
-
+public int boardSize() {
+	System.out.println("Enter Board Size");
+	return this.size=input.nextInt();
+}
 	public void getUserName() {
-
+		
 		System.out.println("Let's play Tic Tac Toe!");
 		System.out.print("Player 1, what is your name? ");
 		String p1 = input.nextLine();
@@ -83,5 +89,7 @@ public class GameIO implements IGameioable {
 		}
 
 	}
+
+	
 
 }

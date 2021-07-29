@@ -1,4 +1,7 @@
-package com.project.tictactoe;
+package com.project.tictactoe.board;
+
+import com.project.tictactoe.cell.Cell;
+import com.project.tictactoe.mark.Mark;
 
 public class Board implements IBoardable {
 	private int size;

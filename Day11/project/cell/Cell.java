@@ -1,4 +1,6 @@
-package com.project.tictactoe;
+package com.project.tictactoe.cell;
+
+import com.project.tictactoe.mark.Mark;
 
 public class Cell {
 	private Mark mark;

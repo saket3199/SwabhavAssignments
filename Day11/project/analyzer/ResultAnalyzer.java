@@ -1,5 +1,7 @@
-package com.project.tictactoe;
+package com.project.tictactoe.analyzer;
 
+import com.project.tictactoe.cell.Cell;
+import com.project.tictactoe.mark.Mark;
 import com.techlab.tictactoe.Board;
 
 public class ResultAnalyzer implements IResultable {
@@ -44,5 +46,7 @@ public class ResultAnalyzer implements IResultable {
 		return Mark.E;
 
 	}
+
+	
 
 }

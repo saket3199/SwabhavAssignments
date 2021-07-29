@@ -1,6 +1,8 @@
-package com.project.tictactoe;
+package com.project.tictactoe.game;
 
 import java.util.ArrayList;
+
+import com.project.tictactoe.cell.Cell;
 
 public interface IGameioable {
 	

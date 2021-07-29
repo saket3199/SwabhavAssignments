@@ -1,7 +1,13 @@
-package com.project.tictactoe;
+package com.project.tictactoe.game;
 
 import java.util.ArrayList;
-import com.techlab.tictactoe.ResultEnum;
+
+import com.project.tictactoe.analyzer.ResultAnalyzer;
+import com.project.tictactoe.board.Board;
+import com.project.tictactoe.cell.Cell;
+import com.project.tictactoe.mark.Mark;
+import com.project.tictactoe.player.Player;
+
 
 public class Game {
 	private GameIO gameIO;
@@ -9,12 +15,13 @@ public class Game {
 	private Board board;
 	private ResultAnalyzer resultAnalyzer;
 	private Player player;
+	
 
 	public Game(int size) {
 		this.size = size;
 		new Board(size);
 		player = new Player();
-		gameIO = new GameIO(size);
+		gameIO = new GameIO();
 		board = new Board(size);
 		resultAnalyzer = new ResultAnalyzer(size);
 
