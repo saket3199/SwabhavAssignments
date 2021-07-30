@@ -14,9 +14,12 @@ public class GameIO implements IGameioable {
 	private int size;
 	private Player player;
 	private Scanner input;
+	private Game game;
+	private ArrayList<Integer> array;
+	
 	public GameIO() {
 		input = new Scanner(System.in);
-		new Game(boardSize());
+		game = new Game(boardSize());
 	}
 public int boardSize() {
 	System.out.println("Enter Board Size");
@@ -33,12 +36,41 @@ public int boardSize() {
 		player.setPlayer1(true);
 
 	}
+	public void Play() {
+		this.drawBoard(game.generateBoard());
+		this.getUserName();
+		
+		while (true) {
+			this.drawBoard(game.generateBoard());
+			if(game.TakeInput()==1||game.TakeInput()==2) {
+				this.whoseTurn(game.TakeInput());
+			}
+			while(true) {
+				int i = game.putMark(array);
+				if(i ==1|| i==2) {
+					this.boardValidator(i);
+				}
+				else {
+					break;
+				}
+			}
+			int i =game.resultAnalysis();
+			if(i==1||i==2||i==3) {
+				this.printResult(i);
+				break;
+			}
+		}
+		this.drawBoard(game.generateBoard());
+		
+	}
 	public void boardValidator(int i) {
 		switch(i) {
 		case 1:
 			System.out.println("This position is off the bounds of the board! Try again.");
 		case 2:
 			System.out.println("Someone has already made a move at this position! Try again.");
+		default:
+			System.err.println("System Error");
 		}
 	}
 
@@ -55,23 +87,25 @@ public int boardSize() {
 
 	}
 
-	public void printResult(String name,int i) {
+	public void printResult(int i) {
 		switch (i) {
 		case 1:
-			System.out.println(name + " has " + ResultEnum.Won);
-		case 0:
+			System.out.println(player.getP1() + " has " + ResultEnum.Won);
+		case 2:
+			System.out.println(player.getP2() + " has " + ResultEnum.Won);
+		case 3:
 			System.out.println("It's a " + ResultEnum.Tie);
 		default:
 			System.err.print("System Error");
 		}
 
 	}
-	public void whoseTurn(String name,int i) {
+	public void whoseTurn(int i) {
 		switch(i) {
 		case 1:
-			System.out.println(name + "'s Turn (" + Mark.X + "):");
+			System.out.println(player.getP1() + "'s Turn (" + Mark.X + "):");
 		case 2:
-			System.out.println(name + "'s Turn (" + Mark.O + "):");
+			System.out.println(player.getP2() + "'s Turn (" + Mark.O + "):");
 		}
 	}
 
@@ -87,6 +121,7 @@ public int boardSize() {
 		}
 
 	}
+
 
 	
 
