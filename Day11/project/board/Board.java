@@ -9,8 +9,10 @@ public class Board implements IBoardable {
 	public Board(int size) {
 		this.size=size;
 		cells = new Cell[size][size];
+		generateBoard(cells);
 		
 	}
+	
 	public int getSize() {
 		return size;
 	}

@@ -13,12 +13,10 @@ import com.techlab.tictactoe.ResultEnum;
 public class GameIO implements IGameioable {
 	private int size;
 	private Player player;
-	private Scanner input;
+	private Scanner input = new Scanner(System.in);;
 	private Game game;
-	private ArrayList<Integer> array;
 
 	public GameIO() {
-		input = new Scanner(System.in);
 		game = new Game(boardSize());
 	}
 
@@ -30,28 +28,27 @@ public class GameIO implements IGameioable {
 	public void getUserName() {
 
 		System.out.println("Let's play Tic Tac Toe!");
-		System.out.print("Player 1, what is your name? ");
-		String p1 = input.nextLine();
-		System.out.print("Player 2, what is your name? ");
-		String p2 = input.nextLine();
+		System.out.print("Player 1, what is your name? \n");
+		String p1 = input.next();
+		System.out.print("Player 2, what is your name? \n");
+		String p2 = input.next();
 		player = new Player(p1, p2);
 		player.setPlayer1(true);
 
 	}
 
 	public void play() {
-//		this.boardSize();
-		game.getBoard().generateBoard(game.getBoard().getCells());
 		this.drawBoard(game.getBoard().getCells());
 		this.getUserName();
 
 		while (true) {
 			this.drawBoard(game.getBoard().getCells());
-			if (game.takeInput() == 1 || game.takeInput() == 2) {
+//			int j = game.takeInput();
+//			if (j == 1 || j == 2) {
 				this.whoseTurn(game.takeInput());
-			}
+//			}
 			while (true) {
-				int i = game.putMark(array);
+				int i = game.putMark(this.userPosition());
 				if (i == 1 || i == 2) {
 					this.boardValidator(i);
 				} else {

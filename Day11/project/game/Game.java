@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.project.tictactoe.analyzer.ResultAnalyzer;
 import com.project.tictactoe.board.Board;
-import com.project.tictactoe.cell.Cell;
 import com.project.tictactoe.mark.Mark;
 import com.project.tictactoe.player.Player;
 
@@ -25,10 +24,7 @@ public class Game {
 
 	}
 
-	public void startGame() {
 
-		takeInput();
-	}
 
 	public int getSize() {
 		return size;
@@ -42,8 +38,12 @@ public class Game {
 		Mark c = Mark.E;
 		if (player.isPlayer1()) {
 			c = Mark.X;
-		} else {
+			player.setPlayer1(false);
+			player.setPlayer2(true);
+		} else if(player.isPlayer2()) {
 			c = Mark.O;
+			player.setPlayer1(true);
+			player.setPlayer2(false);
 		}
 
 		this.getBoard().getCells()[row][col].setMark(c);
@@ -51,6 +51,7 @@ public class Game {
 		col = positions.get(1);
 
 		if (row < 0 || col < 0 || row > size - 1 || col > size - 1) {
+			
 			return 1;
 
 		} else if (this.getBoard().getCells()[row][col] != this.getBoard().getCells()[row][col]) {
@@ -64,11 +65,17 @@ public class Game {
 	public int takeInput() {
 
 		if (player.isPlayer1()) {
+			
+			player.setPlayer2(true);
+			player.setPlayer1(false);
 			return 1;
 
-		} else {
+		} else if(player.isPlayer2()){
+			player.setPlayer1(true);
+			player.setPlayer2(false);
 			return 2;
 		}
+		return 0;
 
 	}
 
