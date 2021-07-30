@@ -16,17 +16,19 @@ public class GameIO implements IGameioable {
 	private Scanner input;
 	private Game game;
 	private ArrayList<Integer> array;
-	
+
 	public GameIO() {
 		input = new Scanner(System.in);
 		game = new Game(boardSize());
 	}
-public int boardSize() {
-	System.out.println("Enter Board Size");
-	return this.size=input.nextInt();
-}
+
+	public int boardSize() {
+		System.out.println("Enter Board Size");
+		return this.size = input.nextInt();
+	}
+
 	public void getUserName() {
-		
+
 		System.out.println("Let's play Tic Tac Toe!");
 		System.out.print("Player 1, what is your name? ");
 		String p1 = input.nextLine();
@@ -36,36 +38,38 @@ public int boardSize() {
 		player.setPlayer1(true);
 
 	}
+
 	public void play() {
 //		this.boardSize();
-		this.drawBoard(game.generateBoard());
+		game.getBoard().generateBoard(game.getBoard().getCells());
+		this.drawBoard(game.getBoard().getCells());
 		this.getUserName();
-		
+
 		while (true) {
-			this.drawBoard(game.generateBoard());
-			if(game.takeInput()==1||game.takeInput()==2) {
+			this.drawBoard(game.getBoard().getCells());
+			if (game.takeInput() == 1 || game.takeInput() == 2) {
 				this.whoseTurn(game.takeInput());
 			}
-			while(true) {
+			while (true) {
 				int i = game.putMark(array);
-				if(i ==1|| i==2) {
+				if (i == 1 || i == 2) {
 					this.boardValidator(i);
-				}
-				else {
+				} else {
 					break;
 				}
 			}
-			int i =game.resultAnalysis();
-			if(i==1||i==2||i==3) {
+			int i = game.resultAnalysis();
+			if (i == 1 || i == 2 || i == 3) {
 				this.printResult(i);
 				break;
 			}
 		}
-		this.drawBoard(game.generateBoard());
-		
+		this.drawBoard(game.getBoard().getCells());
+
 	}
+
 	public void boardValidator(int i) {
-		switch(i) {
+		switch (i) {
 		case 1:
 			System.out.println("This position is off the bounds of the board! Try again.");
 		case 2:
@@ -101,8 +105,9 @@ public int boardSize() {
 		}
 
 	}
+
 	public void whoseTurn(int i) {
-		switch(i) {
+		switch (i) {
 		case 1:
 			System.out.println(player.getP1() + "'s Turn (" + Mark.X + "):");
 		case 2:
@@ -113,7 +118,7 @@ public int boardSize() {
 	@Override
 	public void drawBoard(Cell[][] board) {
 		// TODO Auto-generated method stub
-		
+
 		System.out.println("Board:");
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -123,8 +128,5 @@ public int boardSize() {
 		}
 
 	}
-
-
-	
 
 }
