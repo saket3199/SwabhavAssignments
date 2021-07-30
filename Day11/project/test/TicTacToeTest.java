@@ -1,6 +1,5 @@
 package com.project.tictactoe.test;
 
-import com.project.tictactoe.game.Game;
 import com.project.tictactoe.game.GameIO;
 
 public class TicTacToeTest {
@@ -9,8 +8,7 @@ public class TicTacToeTest {
 		// TODO Auto-generated method stub
 
 		GameIO  gameIo =new GameIO();
-		Game game = new Game(gameIo.boardSize());
-		game.startGame(); 
+		gameIo.Play(); 
 		
 		
 	}

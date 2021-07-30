@@ -37,6 +37,7 @@ public int boardSize() {
 
 	}
 	public void Play() {
+		this.boardSize();
 		this.drawBoard(game.generateBoard());
 		this.getUserName();
 		
