@@ -10,18 +10,17 @@ import com.project.tictactoe.player.Player;
 
 
 public class Game {
-	private GameIO gameIO;
 	private int size;
 	private Board board;
 	private ResultAnalyzer resultAnalyzer;
 	private Player player;
+	IGameioable IGameable;
 	
 
 	public Game(int size) {
 		this.size = size;
 		new Board(size);
 		player = new Player();
-		gameIO = new GameIO();
 		board = new Board(size);
 		resultAnalyzer = new ResultAnalyzer(size);
 
@@ -46,20 +45,20 @@ public class Game {
 		board.generateBoard(boards);
 
 		Cell cell = new Cell();
-		gameIO.getUserName();
+		IGameable.getUserName();
 		boolean gameEnded = false;
 		while (!gameEnded) {
 
 			// Draw the board
 
-			gameIO.drawBoard(boards);
+			IGameable.drawBoard(boards);
 
 			// Print whose turn it is
 			if (player.isPlayer1()) {
-				gameIO.whoseTurn(player.getP1(), 1);
+				IGameable.whoseTurn(player.getP1(), 1);
 
 			} else {
-				gameIO.whoseTurn(player.getP2(), 2);
+				IGameable.whoseTurn(player.getP2(), 2);
 			}
 
 			if (player.isPlayer1()) {
@@ -70,15 +69,15 @@ public class Game {
 
 			while (true) {
 
-				ArrayList<Integer> positions = gameIO.userPosition();
+				ArrayList<Integer> positions = IGameable.userPosition();
 				row = positions.get(0);
 				col = positions.get(1);
 
 				if (row < 0 || col < 0 || row > size - 1 || col > size - 1) {
-					gameIO.boardValidator(1);
+					IGameable.boardValidator(1);
 
 				} else if (boards[row][col] != cell) {
-					gameIO.boardValidator(2);
+					IGameable.boardValidator(2);
 
 				} else {
 					break;
@@ -89,19 +88,18 @@ public class Game {
 			boards[row][col].setMark(c);
 
 			if (resultAnalyzer.playerHasWon(boards) == Mark.X) {
-				gameIO.printResult(player.getP1(), 1);
+				IGameable.printResult(player.getP1(), 1);
 				gameEnded = true;
 			} else if (resultAnalyzer.playerHasWon(boards) == Mark.O) {
-				gameIO.printResult(player.getP2(), 1);
+				IGameable.printResult(player.getP2(), 1);
 				gameEnded = true;
 			} else {
 
 				if (board.boardIsFull(boards)) {
-					gameIO.printResult(player.getP1(), 0);
+					IGameable.printResult(player.getP1(), 0);
 					gameEnded = true;
 				} else {
-					boolean p11;
-					p11 = player.isPlayer1();
+					boolean p11 = player.isPlayer1();
 					p11 = !player.isPlayer1();
 				}
 
@@ -109,7 +107,7 @@ public class Game {
 
 		}
 
-		gameIO.drawBoard(boards);
+		IGameable.drawBoard(boards);
 
 	}
 

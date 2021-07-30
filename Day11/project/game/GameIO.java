@@ -14,11 +14,9 @@ public class GameIO implements IGameioable {
 	private int size;
 	private Player player;
 	private Scanner input;
-	private Game game;
-
 	public GameIO() {
 		input = new Scanner(System.in);
-		game = new Game(boardSize());
+		new Game(boardSize());
 	}
 public int boardSize() {
 	System.out.println("Enter Board Size");
