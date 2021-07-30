@@ -36,15 +36,15 @@ public int boardSize() {
 		player.setPlayer1(true);
 
 	}
-	public void Play() {
-		this.boardSize();
+	public void play() {
+//		this.boardSize();
 		this.drawBoard(game.generateBoard());
 		this.getUserName();
 		
 		while (true) {
 			this.drawBoard(game.generateBoard());
-			if(game.TakeInput()==1||game.TakeInput()==2) {
-				this.whoseTurn(game.TakeInput());
+			if(game.takeInput()==1||game.takeInput()==2) {
+				this.whoseTurn(game.takeInput());
 			}
 			while(true) {
 				int i = game.putMark(array);
@@ -113,6 +113,7 @@ public int boardSize() {
 	@Override
 	public void drawBoard(Cell[][] board) {
 		// TODO Auto-generated method stub
+		
 		System.out.println("Board:");
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {

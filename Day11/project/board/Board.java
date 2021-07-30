@@ -14,20 +14,25 @@ public class Board implements IBoardable {
 	public int getSize() {
 		return size;
 	}
-	
-	public void generateBoard(Cell board[][]) {
-		for(int i = 0; i < board.length; i++) {
-			for(int j = 0; j < board[i].length; j++) {
+	public Cell getCell(int i, int j){
+		return cells[i][j];
+	}
+	public Cell[][] getCells() {
+		return cells;
+	}
+	public void generateBoard(Cell cells[][]) {
+		for(int i = 0; i < cells.length; i++) {
+			for(int j = 0; j < cells[i].length; j++) {
 				Cell cell = new Cell();
-				board[i][j] = cell ;
+				cells[i][j] = cell ;
 			}
 		}
 	}
 	
-	public boolean boardIsFull(Cell[][] board) {
-		for(int i = 0; i < board.length; i++) {
-			for(int j = 0; j < board.length; j++) {
-				if(board[i][j].getMark() == Mark.E) {
+	public boolean boardIsFull(Cell[][] cells) {
+		for(int i = 0; i < cells.length; i++) {
+			for(int j = 0; j < cells.length; j++) {
+				if(cells[i][j].getMark() == Mark.E) {
 					return false;
 				}
 			}

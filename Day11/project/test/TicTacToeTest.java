@@ -8,7 +8,7 @@ public class TicTacToeTest {
 		// TODO Auto-generated method stub
 
 		GameIO  gameIo =new GameIO();
-		gameIo.Play(); 
+		gameIo.play(); 
 		
 		
 	}
